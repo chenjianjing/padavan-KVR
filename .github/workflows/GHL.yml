@@ -1,5 +1,5 @@
 #修改40行的TNAME: NEWIFI3 中的NEWIFI3为你需要编译的型号，注意名称要与trunk/configs/templates/目录下的名字相同
-name: NEWIFI3
+name: GNL
 
 on: 
   workflow_dispatch:
@@ -45,7 +45,7 @@ jobs:
         sed -i 's/mtd_part_size=65536/mtd_part_size=18874368/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
     - name: Build Firmware
       env:
-        TNAME: NEWIFI3
+        TNAME: GNL
         KERNEL: 3.4
       run: |
         cd /opt/rt-n56u/trunk
@@ -444,7 +444,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: NEWIFI3
+        name: GNL
         path: /opt/images
 
     - name: Release
