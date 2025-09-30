@@ -2356,6 +2356,15 @@ static int vntcli_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_N2N)  // 与你的配置项对应
+static int n2n_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+    int n2n_status_code = pids("edge");  // n2n 客户端核心进程名为 "edge"
+    websWrite(wp, "function n2n_status() { return %d;}\n", n2n_status_code);
+    return 0;
+}
+#endif
+
 /*#if defined (APP_NPC)
 static int npc_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
