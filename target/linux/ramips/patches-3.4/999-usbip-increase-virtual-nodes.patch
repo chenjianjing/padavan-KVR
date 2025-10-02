@@ -1,0 +1,20 @@
+--- a/drivers/usb/usbip/usbip_vudc.c
++++ b/drivers/usb/usbip/usbip_vudc.c
+@@ -42,7 +42,7 @@
+ #define DRIVER_AUTHOR "Kiyoshi Ueda <k-ueda@ct.jp.nec.com>, " \
+ 			"Takahiro Hirofuchi <t.hirofuchi@aist.go.jp>"
+ #define DRIVER_DESC "USB/IP Virtual USB Device Controller"
+-#define MAX_VUDC 8
++#define MAX_VUDC 37  // 增加到37个虚拟节点
+
+ static struct usbip_vudc *vudc_devices[MAX_VUDC];
+ static DEFINE_MUTEX(vudc_mutex);
+@@ -1786,7 +1786,7 @@ static int __init usbip_vudc_init(void)
+ 	int retval;
+ 	int i;
+ 
+-	pr_info("USB/IP Virtual USB Device Controller (max %d devices)\n", MAX_VUDC);
++	pr_info("USB/IP Virtual USB Device Controller (max %d devices)\n", MAX_VUDC);
+ 
+ 	retval = usb_register(&vudc_driver);
+ 	if (retval) {
